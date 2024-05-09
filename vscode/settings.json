@@ -1,0 +1,12 @@
+{
+    "workbench.colorTheme": "GitHub Light Default",
+    "files.restoreUndoStack": false,
+    "explorer.enableUndo": false,
+    "notebook.undoRedoPerCell": false,
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "terminal.integrated.fontSize": 16,
+    "editor.lineHeight": 1.3,
+    "terminal.integrated.lineHeight": 0.4,
+    "editor.fontSize": 12
+}
