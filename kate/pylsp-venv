@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# Author: Sakthi Santhosh
+# Created on: 06/05/2024
+
+cd $1
+
+if [ -d "$1/venv/" ]; then
+    source ./venv/bin/activate
+fi
+
+pylsp --check-parent-process
