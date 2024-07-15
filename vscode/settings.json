@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "GitHub Light Default",
+    "workbench.colorTheme": "Default Dark+",
     "files.restoreUndoStack": false,
     "explorer.enableUndo": false,
     "notebook.undoRedoPerCell": false,
@@ -11,5 +11,8 @@
     "editor.fontSize": 12,
     "editor.fontWeight": "bold",
     "terminal.integrated.fontWeight": "bold",
-    "files.autoSave": "off"
+    "files.autoSave": "off",
+    "editor.rulers": [
+        80
+    ]
 }
