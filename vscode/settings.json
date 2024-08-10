@@ -14,5 +14,9 @@
     "files.autoSave": "off",
     "editor.rulers": [
         80
-    ]
+    ],
+    "editor.codeLens": false,
+    "editor.minimap.enabled": false,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true
 }
