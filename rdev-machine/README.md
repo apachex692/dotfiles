@@ -1,4 +1,4 @@
-Dot Files and Automation Scripts for Remote Development Machine (AWS)
+# Dot Files and Automation Scripts for Remote Development Machine (AWS)
 
 - **Author:** Apache X692
 - **Created on:** 06/12/2024
