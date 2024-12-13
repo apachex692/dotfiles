@@ -5,6 +5,8 @@
 # Control Panel
 set -e
 
+TIMEZONE='Asia/Kolkata'
+
 INSTALL_GO=true
 INSTALL_UV=true
 INSTALL_DOCKER=true
@@ -56,6 +58,7 @@ fi
 if [ "$INSTALL_KUBECTL" = true ]; then
   curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
   install -o root -g root -m 0755 ./kubectl /usr/local/bin/kubectl
+  rm -f ./kubectl
 fi
 
 # Kustomize
@@ -92,9 +95,6 @@ if [ "$INSTALL_VSCODE" = true ]; then
   mkdir -p ./.local/bin/ && mv ./code ./.local/bin/
   rm ./code.tar.gz
 fi
-
-# Cleanup
-rm -f ./kubectl
 
 # Configurations: Aliases
 user=$(awk -F: '$3 == 1000 { print $1 }' /etc/passwd)
@@ -133,7 +133,7 @@ cat <<EOF > /home/$user/.gitconfig
     defaultbranch = main
 EOF
 
-# VIMRC
+# VIM RC
 cat <<EOF > /home/$user/.vimrc
 set expandtab
 set shiftwidth=2
@@ -150,3 +150,25 @@ filetype indent on
 
 highlight Comment cterm=italic gui=italic
 EOF
+
+# tmux
+cat <<EOF /home/$user/.tmux.conf
+set -g status on
+set -g status-interval 60
+set -g status-justify centre
+set -g status-bg black
+set -g status-fg white
+set -g status-left-length 50
+set -g status-right-length 100
+
+set -g status-left "#[bold]W#I#[default]/S#S"
+set -g status-right "#(date '+%d/%m/%Y | %H:%M') | 🚁"
+
+setw -g window-status-format "[#I]#W"
+setw -g window-status-current-format "#[fg=yellow,bold][#I]#W#[default]"
+setw -g window-status-separator " | "
+
+bind-key r source-file ~/.tmux.conf \; display-message "Apache X692"
+EOF
+
+sudo timedatectl set-timezone "$TIMEZONE"
