@@ -10,3 +10,5 @@ syntax on
 set autoindent
 set smartindent
 filetype indent on
+
+highlight Comment cterm=italic gui=italic
