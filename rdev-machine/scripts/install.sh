@@ -6,6 +6,8 @@
 set -e
 
 TIMEZONE='Asia/Kolkata'
+HOSTNAME='rdev-machine-001'
+USER=$(awk -F: '$3 == 1000 { print $1 }' /etc/passwd)
 
 INSTALL_GO=true
 INSTALL_UV=true
@@ -85,21 +87,19 @@ if [ "$INSTALL_AWS_CLI" = true ]; then
   unzip ./awscliv2.zip
   ./aws/install
   rm -r ./aws/ ./awscliv2.zip
+  completion -C $(which aws_completer) aws
 fi
 
 # VS Code
 if [ "$INSTALL_VSCODE" = true ]; then
-  wget -O ./code.tar.gz \
-    "https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64"
-  tar -x -z -f ./code.tar.gz
-  mkdir -p ./.local/bin/ && mv ./code ./.local/bin/
-  rm ./code.tar.gz
+    su - admin -c "wget -O ./code.tar.gz 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64'"
+    su - admin -c "tar -x -z -f ./code.tar.gz"
+    su - admin -c "mkdir -p ./.local/bin/ && mv ./code ./.local/bin/"
+    su - admin -c "rm ./code.tar.gz"
 fi
 
 # Configurations: Aliases
-user=$(awk -F: '$3 == 1000 { print $1 }' /etc/passwd)
-
-cat <<EOF > /home/$user/.bash_aliases
+cat <<EOF > /home/$USER/.bash_aliases
 alias ll='ls -alh'
 alias mkcd='function _mkcd() { mkdir -p "$1" && cd "$1"; }; _mkcd'
 
@@ -112,12 +112,14 @@ alias tfaa='terraform apply --auto-approve'
 alias tfda='terraform destroy --auto-approve'
 
 alias p='python'
-alias d='docker'
 alias k='kubectl'
 alias kk='kustomize'
 alias h='helm'
 
 alias vscode='nohup /home/admin/.local/bin/code tunnel > /dev/null 2>&1 &'
+
+alias d='docker'
+alias dcsr='docker stop $1; docker rm $1'
 EOF
 
 # Kubectl Auto-completion
@@ -125,7 +127,7 @@ echo 'source <(kubectl completion bash)' >> ~/.bashrc
 echo 'complete -o default -F __start_kubectl k' >> ~/.bashrc
 
 # Git Config
-cat <<EOF > /home/$user/.gitconfig
+cat <<EOF > /home/$USER/.gitconfig
 [user]
     email = mail@sakthisanthosh.in
     name = Apache X692
@@ -134,7 +136,7 @@ cat <<EOF > /home/$user/.gitconfig
 EOF
 
 # VIM RC
-cat <<EOF > /home/$user/.vimrc
+cat <<EOF > /home/$USER/.vimrc
 set expandtab
 set shiftwidth=2
 set softtabstop=2
@@ -152,7 +154,7 @@ highlight Comment cterm=italic gui=italic
 EOF
 
 # tmux
-cat <<EOF /home/$user/.tmux.conf
+cat <<EOF > /home/$USER/.tmux.conf
 set -g status on
 set -g status-interval 60
 set -g status-justify centre
@@ -172,3 +174,6 @@ bind-key r source-file ~/.tmux.conf \; display-message "Apache X692"
 EOF
 
 sudo timedatectl set-timezone "$TIMEZONE"
+sudo hostnamectl set-hostname "$HOSTNAME"
+
+echo 'export PATH="$PATH:/usr/local/go/bin"' >> /home/$USER/.bashrc
