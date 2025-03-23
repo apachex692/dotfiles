@@ -1,4 +1,4 @@
-alias ll='ls -alh'
+alias ll='ls -alht'
 alias mkcd='function _mkcd() { mkdir -p "$1" && cd "$1"; }; _mkcd'
 
 alias tf='terraform'
