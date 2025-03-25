@@ -1,5 +1,3 @@
-autocmd BufWritePre *.py execute "silent !black --quiet --stdin-filename % -" | edit!
-
 let mapleader = " "
 
 nnoremap <leader>ex :Ex<CR>
@@ -29,8 +27,8 @@ set smartindent
 set ignorecase
 
 syntax on
-filetype indent on
 colorscheme slate
+filetype indent on
 highlight Comment cterm=italic
 
 set shortmess+=I

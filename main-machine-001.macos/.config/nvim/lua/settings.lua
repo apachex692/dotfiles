@@ -10,10 +10,11 @@ vim.opt.relativenumber = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.ignorecase = true
+vim.opt.completeopt = "menuone,noselect"
 
 vim.cmd("syntax on")
 vim.cmd("filetype indent on")
-vim.cmd("colorscheme slate")
+vim.cmd("colorscheme vim")
 vim.cmd("highlight Comment cterm=italic")
 
 vim.opt.shortmess:append("I")
