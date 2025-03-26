@@ -1,0 +1,101 @@
+{
+  // Editor Behavior
+  "format_on_save": "on",
+  "wrap_guides": [80],
+  "soft_wrap": "editor_width",
+  "vim_mode": true,
+  "vim": {
+    "toggle_relative_line_numbers": true
+  },
+
+  // Languages and Tools
+  "lsp": {
+    "pyright": {
+      "settings": {
+        "python": {
+          "pythonPath": ".venv/bin/python"
+        }
+      }
+    },
+    "ruff": {
+      "initialization_options": {
+        "settings": {
+          "lineLength": 79,
+          "lint": {
+            "extendSelect": ["E", "I", "SIM", "B", "S", "N"]
+          }
+        }
+      }
+    }
+  },
+  "languages": {
+    "Python": {
+      "language_servers": ["pyright", "ruff"],
+      "format_on_save": "on",
+      "formatter": [
+        {
+          "language_server": {
+            "name": "ruff"
+          }
+        }
+      ]
+    }
+  },
+
+  // Font Settings
+  "ui_font_family": "JetBrains Mono",
+  "buffer_font_family": "JetBrains Mono",
+  "ui_font_size": 14,
+  "buffer_font_size": 12,
+  "ui_font_weight": 500,
+  "buffer_font_weight": 500,
+  "terminal": {
+    "font_size": 12,
+    "font_weight": 500,
+    "detect_venv": "off"
+  },
+  "cursor_blink": false,
+
+  // Theme Settings
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Xcode Classic Darker"
+  },
+  "experimental.theme_overrides": {
+    "syntax": {
+      "comment": {
+        "foreground": "#333333",
+        "font_style": "italic"
+      }
+    }
+  },
+
+  // AI Assistant
+  "assistant": {
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-3-7-sonnet"
+    },
+    "version": "2"
+  },
+
+  // Remote Connections
+  "ssh_connections": [
+    {
+      "host": "192.168.0.108",
+      "username": "sakthi",
+      "projects": [
+        {
+          "paths": ["~/Documents"]
+        }
+      ],
+      "nickname": "work-machine-001"
+    }
+  ],
+
+  // Privacy
+  "telemetry": {
+    "metrics": false
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "Create Main Guard": {
+    "prefix": "mg",
+    "body": ["if __name__ == \"__main__\":", "${1:main}()"],
+    "description": "Create main run guard for a file."
+  },
+  "Create Single File": {
+    "prefix": "sf",
+    "body": [
+      "def main():",
+      "    pass",
+      "",
+      "if __name__ == \"__main__\":",
+      "    main()"
+    ],
+    "description": "Create a single file with main function and guard rails, useful for single-file scripting."
+  }
+}
