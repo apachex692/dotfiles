@@ -1,4 +1,4 @@
-# Dot Files for GNU/Linux - Debian Systems
+# Dot Files for GNU/Linux (Debian-based primarily) and macOS Systems
 
 This repository contains all my dot-files from my various machines.
 
