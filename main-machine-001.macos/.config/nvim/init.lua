@@ -4,7 +4,6 @@ require('keymaps')
 require('settings')
 require('autocmds')
 
-require('lsp.autocmds')
 require('lsp.cmds')
 require('lsp.diagnostics')
 

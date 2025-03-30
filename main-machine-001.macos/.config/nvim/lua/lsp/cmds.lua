@@ -34,7 +34,11 @@ vim.api.nvim_create_user_command(
   {}
 )
 
-vim.api.nvim_create_user_command('PyrightSetPythonPath',
+-- Language Specific
+-- Python
+vim.api.nvim_create_user_command('PythonPyrightSetInterpreterPath',
   function(opts)
     lsp_python_cmds.pyright_set_python_path(opt.args)
-  end, { nargs = 1 })
+  end,
+  { nargs = 1 }
+)
