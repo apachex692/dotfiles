@@ -31,7 +31,7 @@
         "settings": {
           "lineLength": 79,
           "lint": {
-            "extendSelect": ["E", "I", "SIM", "B", "S", "N"]
+            "select": ["E", "I", "SIM", "B", "S", "N"]
           }
         }
       }
