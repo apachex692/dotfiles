@@ -16,25 +16,30 @@ vim.opt.softtabstop = 4
 
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.signcolumn = 'yes'
 
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.ignorecase = true
 
+-- Guides
+vim.opt.colorcolumn = '80'
+
+-- Determines: Menu Completions (set for: LSP completions)
+vim.opt.completeopt = { 'menu', 'menuone', 'noinsert', 'popup' }
+
+-- Color Scheme
 vim.cmd('syntax on')
 vim.cmd('colorscheme slate')
 vim.cmd('filetype indent on')
 vim.cmd('highlight Comment cterm=italic')
-
--- Guides
-vim.opt.colorcolumn = '80'
 vim.cmd('highlight ColorColumn ctermbg=darkgrey guibg=grey')
 
 vim.opt.shortmess:append('I')
 
 -- FZF Base Command with Ignore Patterns
 vim.env.FZF_DEFAULT_COMMAND =
-'[ -f .filelist ] && cat .filelist || (find . \\( -name node_modules -o -name .venv -o -name .git -o -name __pycache__ -o -name "*.swp" \\) -prune -o -type f -print | tee .filelist)'
+'[ -f .filelist ] && cat .filelist || (find . \\( -name node_modules -o -name .venv -o -name .git -o -name __pycache__ -o -name \'*.swp\' \\) -prune -o -type f -print | tee .filelist)'
 vim.g.fzf_action = { enter = 'confirm e' }
 
 -- Support for Vim Plugins

@@ -4,7 +4,7 @@
 -- Keymaps Configuration
 vim.g.mapleader = ' '
 
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 -- File Tree
@@ -44,20 +44,32 @@ keymap('n', '<Tab>', ':bn<CR>', opts)
 keymap('n', '<S-Tab>', ':bp<CR>', opts)
 keymap('n', '<leader>bd', ':bd<CR>', opts)
 
+-- Quick Fix List
+-- keymap('n', '<leader>qn', ':cnext<CR>', opts) -- [l
+-- keymap('n', '<leader>qp', ':cprev<CR>', opts) -- ]l
+keymap('n', '<leader>qc', ':cclose<CR>', opts)
+
+-- Location List
+-- keymap('n', '<leader>ln', ':lnext<CR>', opts) -- [q
+-- keymap('n', '<leader>lp', ':lprev<CR>', opts) -- ]q
+keymap('n', '<leader>lc', ':lclose<CR>', opts)
+
 -- LSP
 -- Diagnostics
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
+keymap('n', '[d', vim.diagnostic.goto_prev, opts)
+keymap('n', ']d', vim.diagnostic.goto_next, opts)
+keymap('n', '<leader>dl', vim.diagnostic.setloclist, opts)
 
 -- LSP Commands
-vim.keymap.set('n', '<leader>f', vim.lsp.buf.format, opts)
-vim.keymap.set('n', 'gca', vim.lsp.buf.code_action, opts)
-vim.keymap.set('n', 'grn', vim.lsp.buf.rename, opts)
-vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-vim.keymap.set('n', 'go', vim.lsp.buf.type_definition, opts)
-vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts) -- Symbol Definition
-vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+keymap('n', '<leader>f', vim.lsp.buf.format, opts)
+keymap('n', 'gd', vim.lsp.buf.definition, opts)
+keymap('n', 'gD', vim.lsp.buf.declaration, opts)
+keymap('n', 'go', vim.lsp.buf.type_definition, opts)
+keymap('n', 'gr', vim.lsp.buf.references, opts)
+keymap('n', 'gi', vim.lsp.buf.implementation, opts) -- gri: Not Working (pre-defined)
+keymap('n', 'gS', ':lua vim.lsp.buf.workspace_symbol("")<Left><Left>', { noremap = true })
+keymap('n', 'K', vim.lsp.buf.hover, opts) -- Symbol Definition
+
+-- keymap('n', 'gca', vim.lsp.buf.code_action, opts) -- gra
+-- keymap('n', 'grn', vim.lsp.buf.rename, opts) -- grn
+-- keymap('n', 'gs', vim.lsp.buf.document_symbol, opts) -- gO
