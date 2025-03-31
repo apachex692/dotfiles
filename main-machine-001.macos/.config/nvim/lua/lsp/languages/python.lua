@@ -2,7 +2,9 @@
 -- Created on: 29/03/2025
 --
 -- LSP Configuration: Python
--- Referenced from: https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/pyright.lua
+-- Referenced from:
+-- 1. https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/pyright.lua
+-- 2. https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/ruff.lua
 local root_files = {
   'pyproject.toml',
   'setup.py',

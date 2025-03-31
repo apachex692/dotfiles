@@ -7,6 +7,7 @@ print('Hello, Apache! 🚁')
 require('keymaps')
 require('settings')
 require('autocmds')
+require('cmds')
 
 require('lsp.autocmds')
 require('lsp.cmds')

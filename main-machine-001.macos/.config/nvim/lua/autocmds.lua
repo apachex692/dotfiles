@@ -3,9 +3,10 @@
 --
 -- Global Auto Commands
 vim.api.nvim_create_autocmd('FileType', {
-    pattern = {'yaml', 'lua'},
-    callback = function()
-        vim.opt.shiftwidth = 2
-        vim.opt.softtabstop = 2
-    end
+  pattern = {'yaml', 'lua'},
+  callback = function()
+    vim.notify('Changed Indentation: 2', vim.log.levels.INFO)
+    vim.opt.shiftwidth = 2
+    vim.opt.softtabstop = 2
+  end
 })
