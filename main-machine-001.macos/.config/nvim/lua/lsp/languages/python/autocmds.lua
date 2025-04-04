@@ -13,7 +13,7 @@ function M.autocomplete(args)
       vim.log.levels.INFO
     )
     -- https://neovim.io/doc/user/lsp.html#lsp-attach
-    vim.lsp.completion.enable(true, client.id, args.buf)
+    vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
   else
     vim.notify(
       'LSP Completion: Unsupported: ' .. client.name,
