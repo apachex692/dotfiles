@@ -1,8 +1,6 @@
 [user]
-	email = 116057110+sakthisanthosh010303@users.noreply.github.com
 	name = Sakthi Santhosh
-	signingkey = 46959CFC07EC9506
-[init]
-	defaultbranch = main
-[commit]
-	gpgsign = true
+	email = mail@sakthisanthosh.in
+	signingkey = /Users/sakthi/.ssh/vcs/personal/apachex692_github__signing
+[gpg]
+	format = ssh
