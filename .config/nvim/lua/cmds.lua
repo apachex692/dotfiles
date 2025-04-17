@@ -1,3 +1,7 @@
+-- Author: Apache X692
+-- Created on: 29/03/2025
+--
+-- Global Commands
 vim.api.nvim_create_user_command('ApacheX692', function()
   local art = [[
     ___    ____  ___   ________  ________   _  _______ ____ ___

@@ -38,9 +38,17 @@ vim.cmd('highlight ColorColumn ctermbg=darkgrey guibg=grey')
 vim.opt.shortmess:append('I')
 
 -- FZF Base Command with Ignore Patterns
-vim.env.FZF_DEFAULT_COMMAND =
-'[ -f .filelist ] && cat .filelist || (find . \\( -name node_modules -o -name .venv -o -name .git -o -name __pycache__ -o -name \'*.swp\' \\) -prune -o -type f -print | tee .filelist)'
+vim.env.FZF_DEFAULT_COMMAND = 'find . -type f ' ..
+    '! -path "./.git/*" ' ..
+    '! -path "./node_modules/*" ' ..
+    '! -path "./venv/*" ' ..
+    '! -path "./.venv/*" ' ..
+    '! -path "./.idea/*" ' ..
+    '! -path "./.env/*" ' ..
+    '! -path "*/__pycache__/*" ' ..
+    '! -name "*.log" ' ..
+    '! -name "*.pyc" ' ..
+    '! -name "*.pyo" ' ..
+    '! -name "*.go" ' ..
+    '! -name "*.out"'
 vim.g.fzf_action = { enter = 'confirm e' }
-
--- Support for Vim Plugins
-vim.opt.runtimepath:append('/Users/sakthisanthosh/.vim/')

@@ -2,6 +2,8 @@
 -- Created on: 29/03/2025
 --
 -- Keymaps Configuration
+helpers = require('helpers')
+
 vim.g.mapleader = ' '
 
 local keymap = vim.keymap.set
@@ -73,3 +75,7 @@ keymap('n', 'K', vim.lsp.buf.hover, opts) -- Symbol Definition
 -- keymap('n', 'gca', vim.lsp.buf.code_action, opts) -- gra
 -- keymap('n', 'grn', vim.lsp.buf.rename, opts) -- grn
 -- keymap('n', 'gs', vim.lsp.buf.document_symbol, opts) -- gO
+
+-- Formatting
+-- Prettier
+keymap('n', '<leader>fp', helpers.format_with_prettier, opts)

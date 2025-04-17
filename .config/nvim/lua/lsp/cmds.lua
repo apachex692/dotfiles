@@ -2,7 +2,7 @@
 -- Created on: 29/03/2025
 --
 -- Commands Configuration: Common for All Languages
-local lsp_python_cmds = require('lsp.languages.python.cmds')
+local pyright_set_python_path = require('lsp.languages.python.helpers').pyright_set_python_path
 
 -- List LSP Capabilities
 -- A command that lists down the capabilities of LSP servers attached to
@@ -39,7 +39,7 @@ vim.api.nvim_create_user_command(
 vim.api.nvim_create_user_command(
   'PythonPyrightSetInterpreterPath',
   function(opts)
-    lsp_python_cmds.pyright_set_python_path(opts.args)
+    pyright_set_python_path(opts.args)
   end,
   {
     nargs = 1,
