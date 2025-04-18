@@ -12,7 +12,6 @@ local root_files = {
   'requirements.txt',
   'Pipfile',
   'pyrightconfig.json',
-  '.git',
 }
 
 -- Configuring LSPs

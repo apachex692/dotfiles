@@ -14,3 +14,4 @@ require('lsp.cmds')
 require('lsp.diagnostics')
 
 require('lsp.languages.python')
+require('lsp.languages.go')
