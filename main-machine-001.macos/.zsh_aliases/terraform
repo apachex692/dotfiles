@@ -1,0 +1,9 @@
+!#/bin/zsh
+
+# Terraform
+alias tfi='terraform init'
+alias tfp='terraform plan'
+alias tfa='terraform apply'
+alias tfaa='terraform apply -auto-approve'
+alias tff='terraform fmt'
+

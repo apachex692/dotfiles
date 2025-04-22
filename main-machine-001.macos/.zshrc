@@ -1,14 +1,11 @@
-echo "Hello, Apache! 🚁"
+echo 'Hello, Apache! 🚁'
 
 PROMPT="%F{cyan}%n%f@%B%F{green}%m%f%b %F{yellow}%~%f
 ➡️  "
 RPROMPT="%F{white}[%?]%f %(?..%F{red}⚠%f) 🚁"
 
-export PATH="$PATH:$HOME/.local/bin/"
-
-alias ll='ls -alh'
-
-. "$HOME/.local/bin/env"
+export PATH="$PATH:$HOME/.local/bin:$HOME/Library/Python/3.9/bin:$HOME/.npm/packages/bin:$HOME/.go/bin/"
+export GOPATH="$HOME/.go/"
 
 # Enable Zsh Completion
 autoload -Uz compinit
@@ -30,17 +27,23 @@ zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*' special-dirs true
 
 # Load History and Improve Command Recall
-HISTSIZE=10000
+HISTSIZE=1000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
-setopt HIST_IGNORE_DUPS HIST_IGNORE_ALL_DUPS HIST_SAVE_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS HIST_SAVE_NO_DUPS
 
 # Enable Command Auto-correction
 setopt correct
 
-# Enable Shared History Across Sessions
-setopt SHARE_HISTORY
-
 # Enable Command Suggestions Based on History
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
+
+export PNPM_HOME='/Users/sakthi/Library/pnpm'
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# Aliases
+[ -f '~/.zsh_aliases/always' ] && source '~/.zsh_aliases/always'
