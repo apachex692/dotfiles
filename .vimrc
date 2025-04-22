@@ -3,7 +3,6 @@ let mapleader = ' '
 " Key-bindings
 " File Tree
 nnoremap <leader>en :Ex<CR>
-nnoremap <leader>ef :FZF<CR>
 
 " File Operations
 nnoremap <leader>w :w<CR>
@@ -38,9 +37,10 @@ nnoremap <Tab> :bn<CR>
 nnoremap <S-Tab> :bp<CR>
 nnoremap <leader>bd :bd<CR>
 
+" Settings
 " netrw Management
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
+let g:netrw_banner=0
+let g:netrw_liststyle=3
 
 set wildmenu
 set nocompatible
@@ -61,6 +61,9 @@ syntax on
 colorscheme slate
 filetype indent on
 highlight Comment cterm=italic
+
+set colorcolumn=80
+highlight ColorColumn ctermbg=darkgrey guibg=lightgrey
 
 set shortmess+=I
 
