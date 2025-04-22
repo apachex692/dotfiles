@@ -2,11 +2,10 @@ let mapleader = ' '
 
 " Key-bindings
 " File Tree
-nnoremap <leader>ex :Ex<CR>
-nnoremap <leader>f :FZF<CR>
+nnoremap <leader>en :Ex<CR>
+nnoremap <leader>ef :FZF<CR>
 
 " File Operations
-nnoremap <leader>q :q<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>r :%s//g<Left><Left>
 
@@ -66,6 +65,17 @@ highlight Comment cterm=italic
 set shortmess+=I
 
 " FZF Base Command with Ignore Patterns
-let $FZF_DEFAULT_COMMAND='find . \( -name node_modules -o -name .venv -o -name .git -o -name __pycache__ -o -name "*.swp" \) -prune -o -type f -print'
+let $FZF_DEFAULT_COMMAND = 'find . -type f ' .
+    \ '! -path "./.git/*" ' .
+    \ '! -path "./node_modules/*" ' .
+    \ '! -path "./venv/*" ' .
+    \ '! -path "./.venv/*" ' .
+    \ '! -path "./.idea/*" ' .
+    \ '! -path "./.env/*" ' .
+    \ '! -path "*/__pycache__/*" ' .
+    \ '! -name "*.log" ' .
+    \ '! -name "*.pyc" ' .
+    \ '! -name "*.pyo" ' .
+    \ '! -name "*.go" ' .
+    \ '! -name "*.out"'
 let g:fzf_action = { 'enter': 'confirm e' }
-
