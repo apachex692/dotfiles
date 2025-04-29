@@ -4,6 +4,7 @@ This is my Neovim configuration. I'm a minimalist, and hence I've written all th
 
 1. Full LSP Support for:
    1. Python (with Ruff and Pyright)
-   2. Go (coming soon)
+   2. Go
+   3. Support for Formatting HTML/CSS/JS/Markdown with Prettier
 2. Easy Keyboard Bindings
-3. Netrw and FZF Support (with FZF caching)
+3. Netrw and FZF Support
