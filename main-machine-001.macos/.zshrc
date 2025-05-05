@@ -46,4 +46,4 @@ case ":$PATH:" in
 esac
 
 # Aliases
-[ -f '~/.zsh_aliases/always' ] && source '~/.zsh_aliases/always'
+[[ -f "$HOME/.zsh_aliases/always" ]] && source "$HOME/.zsh_aliases/always"
