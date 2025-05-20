@@ -7,32 +7,52 @@ local M = {}
 function M.format_with_prettier()
   local buf = vim.api.nvim_get_current_buf()
   local filepath = vim.api.nvim_buf_get_name(buf)
-  local cursor = vim.api.nvim_win_get_cursor(0)
 
-  if filepath == '' then
-    vim.notify(
-      'Buffer has no name, please save this file before formatting.',
-      vim.log.levels.WARN
-    )
+  if filepath == "" then
+    vim.notify("Invalid File Path", vim.log.levels.ERROR)
     return
   end
 
-  vim.cmd('write')
+  if vim.bo.modified then
+    vim.notify("Save File (before formatting)", vim.log.levels.WARN)
+    return
+  end
 
-  local output = vim.fn.systemlist(
-    { 'prettier', '--stdin-filepath', filepath },
-    nil
-  )
-  local exit_code = vim.v.shell_error
-
-  if exit_code == 0 then
-    vim.api.nvim_buf_set_lines(buf, 0, -1, false, output)
-    vim.api.nvim_win_set_cursor(0, cursor)
+  local result = vim.fn.system({ "prettier", "--write", filepath })
+  if vim.v.shell_error ~= 0 then
+    vim.notify("Prettier Failed:\n" .. result, vim.log.levels.ERROR)
   else
-    vim.notify(
-      'Prettier Failed:\n' .. table.concat(output, '\n'),
-      vim.log.levels.ERROR
-    )
+    vim.notify("Formatted with Prettier", vim.log.levels.INFO)
+    -- Reload File
+    vim.cmd("edit!")
+  end
+end
+
+-- Buffer Management
+local function listed_buffers()
+  return vim.tbl_filter(function(buf)
+    return vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].buflisted
+  end, vim.api.nvim_list_bufs())
+end
+
+local function close_buffer(buf)
+  if vim.api.nvim_buf_is_valid(buf) and vim.bo[buf].buflisted then
+    vim.cmd('bdelete ' .. buf)
+  end
+end
+
+-- Close All (except the current one)
+function M.close_other_buffers()
+  local current = vim.api.nvim_get_current_buf()
+  for _, buf in ipairs(listed_buffers()) do
+    if buf ~= current then close_buffer(buf) end
+  end
+end
+
+-- Close All
+function M.close_all_buffers()
+  for _, buf in ipairs(listed_buffers()) do
+    close_buffer(buf)
   end
 end
 

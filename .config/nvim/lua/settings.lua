@@ -22,8 +22,12 @@ vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.ignorecase = true
 
+-- Limit: 80 Characters
+vim.opt.textwidth = 80
+vim.opt.formatoptions:append("t")
+
 -- Guides
-vim.opt.colorcolumn = '80'
+vim.opt.colorcolumn = '88'
 
 -- Determines: Menu Completions (set for: LSP completions)
 vim.opt.completeopt = { 'menu', 'menuone', 'noinsert', 'popup' }

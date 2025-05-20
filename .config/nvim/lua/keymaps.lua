@@ -14,7 +14,6 @@ keymap('n', '<leader>en', ':Ex<CR>', opts)
 keymap('n', '<leader>ef', ':FZF<CR>', opts)
 
 -- File Operations
-keymap('n', '<leader>w', ':w<CR>', opts)
 keymap('n', '<leader>r', ':%s//g<Left><Left>', { noremap = true })
 
 -- Tab Management
@@ -44,7 +43,8 @@ keymap('n', '<C-k>', '<C-w>k', opts)
 keymap('n', '<leader>bl', ':ls<CR>', opts)
 keymap('n', '<Tab>', ':bn<CR>', opts)
 keymap('n', '<S-Tab>', ':bp<CR>', opts)
-keymap('n', '<leader>bd', ':bd<CR>', opts)
+keymap('n', '<leader>bda', helpers.close_all_buffers, opts)
+keymap('n', '<leader>bdo', helpers.close_other_buffers, opts)
 
 -- Quick Fix List
 -- keymap('n', '<leader>qn', ':cnext<CR>', opts) -- [l
