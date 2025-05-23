@@ -36,7 +36,8 @@ vim.opt.completeopt = { 'menu', 'menuone', 'noinsert', 'popup' }
 vim.cmd('syntax on')
 vim.cmd('colorscheme slate')
 vim.cmd('filetype indent on')
-vim.cmd('highlight Comment cterm=italic')
+vim.cmd('highlight Comment cterm=italic gui=italic')
+vim.cmd('highlight String cterm=italic gui=italic')
 vim.cmd('highlight ColorColumn ctermbg=darkgrey guibg=grey')
 
 vim.opt.shortmess:append('I')
