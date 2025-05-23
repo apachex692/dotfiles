@@ -1,3 +1,4 @@
+
 -- Author: Apache X692
 -- Created on: 29/03/2025
 --
@@ -37,7 +38,11 @@ end
 
 local function close_buffer(buf)
   if vim.api.nvim_buf_is_valid(buf) and vim.bo[buf].buflisted then
-    vim.cmd('bdelete ' .. buf)
+    if vim.bo[buf].modified then
+      vim.notify('Unsaved: ' .. buf .. '; Skipping', vim.log.levels.WARN)
+      return
+    end
+    pcall(vim.cmd, 'bdelete ' .. buf)
   end
 end
 
