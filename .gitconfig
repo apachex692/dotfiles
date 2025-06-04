@@ -4,3 +4,5 @@
 	signingkey = /Users/sakthi/.ssh/vcs/personal/apachex692_github__signing
 [gpg]
 	format = ssh
+[alias]
+	st = status --short

@@ -3,7 +3,7 @@
 --
 -- Global Auto Commands
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'yaml', 'lua', 'html' },
+  pattern = { 'yaml', 'lua', 'html', 'hcl' },
   callback = function()
     vim.notify('Changed Indentation: 2', vim.log.levels.INFO)
     vim.opt.shiftwidth = 2
