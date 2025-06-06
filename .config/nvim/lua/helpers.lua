@@ -42,7 +42,7 @@ local function close_buffer(buf)
       vim.notify('Unsaved: ' .. buf .. '; Skipping', vim.log.levels.WARN)
       return
     end
-    pcall(vim.cmd, 'bdelete ' .. buf)
+    vim.cmd('bdelete ' .. buf)
   end
 end
 

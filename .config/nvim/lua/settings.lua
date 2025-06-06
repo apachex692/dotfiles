@@ -34,7 +34,7 @@ vim.opt.completeopt = { 'menu', 'menuone', 'noinsert', 'popup' }
 
 -- Color Scheme
 vim.cmd('syntax on')
-vim.cmd('colorscheme slate')
+vim.cmd('colorscheme shine')
 vim.cmd('filetype indent on')
 vim.cmd('highlight Comment cterm=italic gui=italic')
 vim.cmd('highlight String cterm=italic gui=italic')

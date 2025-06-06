@@ -15,3 +15,4 @@ require('lsp.diagnostics')
 
 require('lsp.languages.python')
 require('lsp.languages.go')
+require('lsp.languages.terraform')

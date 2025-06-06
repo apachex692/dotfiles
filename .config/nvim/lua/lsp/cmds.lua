@@ -16,7 +16,7 @@ vim.api.nvim_create_user_command(
       print('🟢 ' .. client.name .. ':')
       for capability, value in pairs(client.server_capabilities) do
         if value then
-          print('-> ' .. capability)
+          print('- ' .. capability)
         end
       end
       print('\n')
@@ -32,6 +32,22 @@ vim.api.nvim_create_user_command(
     vim.cmd('checkhealth vim.lsp')
   end,
   {}
+)
+
+vim.api.nvim_create_user_command(
+  'LspEnable',
+  function(opts)
+    if vim.lsp.config[opts.args] == nil then
+      vim.notify("LSP Not Configured: " .. opts.args, vim.log.levels.ERROR)
+      return
+    end
+
+  vim.lsp.enable(opts.args)
+  end,
+  {
+    nargs = 1,
+    desc = 'LSP Identifier'
+  }
 )
 
 -- Language Specific

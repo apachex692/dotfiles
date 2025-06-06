@@ -13,4 +13,4 @@ vim.lsp.config['gopls'] = {
 }
 
 -- Enable
-vim.lsp.enable('gopls')
+-- vim.lsp.enable('gopls')
