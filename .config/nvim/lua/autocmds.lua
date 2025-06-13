@@ -5,9 +5,8 @@
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'yaml', 'lua', 'html', 'hcl' },
   callback = function()
-    vim.notify('Changed Indentation: 2', vim.log.levels.INFO)
-    vim.opt.shiftwidth = 2
-    vim.opt.softtabstop = 2
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.softtabstop = 2
   end
 })
 

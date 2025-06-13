@@ -1,12 +1,13 @@
 -- Author: Apache X692
 -- Created on: 29/03/2025
---
--- Settings
+
+-- netrw Behavior
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
 
-vim.opt.wildmenu = true
+-- Core Editor Behavior
 vim.opt.compatible = false
+vim.opt.wildmenu = true
 vim.opt.wrap = true
 vim.opt.hlsearch = false
 
@@ -18,42 +19,47 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = 'yes'
 
-vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.ignorecase = true
 
--- Limit: 80 Characters
+-- Text Formatting
 vim.opt.textwidth = 80
-vim.opt.formatoptions:append("t")
 
--- Guides
+-- Visual Guides
 vim.opt.colorcolumn = '88'
 
--- Determines: Menu Completions (set for: LSP completions)
+-- Completion Behavior
 vim.opt.completeopt = { 'menu', 'menuone', 'noinsert', 'popup' }
 
--- Color Scheme
-vim.cmd('syntax on')
-vim.cmd('colorscheme shine')
-vim.cmd('filetype indent on')
-vim.cmd('highlight Comment cterm=italic gui=italic')
-vim.cmd('highlight String cterm=italic gui=italic')
-vim.cmd('highlight ColorColumn ctermbg=darkgrey guibg=grey')
-
+-- Short Messages
 vim.opt.shortmess:append('I')
 
--- FZF Base Command with Ignore Patterns
-vim.env.FZF_DEFAULT_COMMAND = 'find . -type f ' ..
-    '! -path "./.git/*" ' ..
-    '! -path "./node_modules/*" ' ..
-    '! -path "./venv/*" ' ..
-    '! -path "./.venv/*" ' ..
-    '! -path "./.idea/*" ' ..
-    '! -path "./.env/*" ' ..
-    '! -path "*/__pycache__/*" ' ..
-    '! -name "*.log" ' ..
-    '! -name "*.pyc" ' ..
-    '! -name "*.pyo" ' ..
-    '! -name "*.go" ' ..
-    '! -name "*.out"'
+
+-- Colors and Appearance
+vim.cmd.colorscheme('shine')
+vim.cmd('filetype indent on')
+
+-- Override Styling
+vim.api.nvim_set_hl(0, 'Comment', { italic = true })
+
+-- Italicize String Literals
+local string_hl = vim.api.nvim_get_hl(0, { name = "String", link = false })
+string_hl.italic = true
+vim.api.nvim_set_hl(0, "String", string_hl)
+
+-- Environment Variables (FZF)
+vim.env.FZF_DEFAULT_COMMAND = table.concat({
+    'find . -type f',
+    '! -path "./.git/*"',
+    '! -path "./node_modules/*"',
+    '! -path "./venv/*"',
+    '! -path "./.venv/*"',
+    '! -path "./.idea/*"',
+    '! -path "./.env/*"',
+    '! -path "*/__pycache__/*"',
+    '! -name "*.log"',
+    '! -name "*.pyc"',
+    '! -name "*.pyo"',
+    '! -name "*.out"',
+}, ' ')
 vim.g.fzf_action = { enter = 'confirm e' }

@@ -2,7 +2,7 @@
 -- Created on: 29/03/2025
 --
 -- Autocommand Configuration
-local autocomplete = require('lsp.languages.python.helpers').autocomplete
+local autocomplete = require('lsp.helpers').autocomplete
 
 -- Language: Python
 vim.api.nvim_create_autocmd('LspAttach', {

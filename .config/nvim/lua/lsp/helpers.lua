@@ -1,7 +1,7 @@
 -- Author: Apache X692
 -- Created on: 29/03/2025
 --
--- Helpers: Python
+-- LSP Helper Functions
 local M = {}
 
 function M.autocomplete(args)
@@ -22,6 +22,7 @@ function M.autocomplete(args)
   end
 end
 
+-- Language Specific Helpers
 -- Pyright: Python Interpreter Path Setter
 function M.pyright_set_python_path(path)
   local clients = vim.lsp.get_clients {
