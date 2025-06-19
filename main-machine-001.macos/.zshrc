@@ -1,4 +1,5 @@
-echo '    ___    ____  ___   ________  ________   _  _______ ____ ___
+apache() {
+  echo '    ___    ____  ___   ________  ________   _  _______ ____ ___
    /   |  / __ \/   | / ____/ / / / ____/  | |/ / ___// __ \__ \
   / /| | / /_/ / /| |/ /   / /_/ / __/     |   / __ \/ /_/ /_/ /
  / ___ |/ ____/ ___ / /___/ __  / /___    /   / /_/ /\__, / __/
@@ -7,12 +8,13 @@ echo '    ___    ____  ___   ________  ________   _  _______ ____ ___
                             🚁🚁🚁🚁🚁
                    Engineering as \e[3mResponsibility\e[0m
 '
+}
 
 PROMPT="%F{cyan}%n%f@%B%F{green}%m%f%b %F{yellow}%~%f
 ➡️  "
 RPROMPT="%F{white}[%?]%f %(?..%F{red}⚠%f) 🚁"
 
-export PATH="$PATH:$HOME/.local/bin:$HOME/Library/Python/3.9/bin:$HOME/.npm/packages/bin:$HOME/.go/bin/"
+export PATH="$PATH:$HOME/.local/bin:$HOME/Library/Python/3.9/bin:$HOME/.npm/global-packages/bin:$HOME/.go/bin/"
 export GOPATH="$HOME/.go/"
 
 # Enable Zsh Completion
@@ -47,11 +49,6 @@ setopt correct
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 
-export PNPM_HOME='/Users/sakthi/Library/pnpm'
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-
-# Aliases
 [[ -f "$HOME/.zsh_aliases/always" ]] && source "$HOME/.zsh_aliases/always"
+
+apache
