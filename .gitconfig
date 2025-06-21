@@ -1,8 +1,11 @@
 [user]
-	name = Sakthi Santhosh
-	email = mail@sakthisanthosh.in
-	signingkey = /Users/sakthi/.ssh/vcs/personal/apachex692_github__signing
+    name = Sakthi Santhosh
+    email = mail@sakthisanthosh.in
+    signingkey = /Users/sakthi/.ssh/vcs/personal/apachex692_github__signing
 [gpg]
-	format = ssh
+    format = ssh
 [alias]
-	st = status --short
+    st = status --short
+    ct = commit -a -S -q
+    ph = push -q
+    l = log --all --graph --oneline -5
