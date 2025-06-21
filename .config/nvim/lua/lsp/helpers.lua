@@ -44,4 +44,36 @@ function M.pyright_set_python_path(path)
   end
 end
 
+-- Markdown: Show ToC
+function M.show_markdown_toc()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+  local toc_items = {}
+
+  for linenr, line in ipairs(lines) do
+    local hashes, text = line:match("^(#+)%s+(.*)")
+    if hashes and text then
+      local level = #hashes
+      table.insert(toc_items, {
+        bufnr = bufnr,
+        lnum = linenr,
+        col = 1,
+        text = string.format("H%d %s", level, text),
+      })
+    end
+  end
+
+  if vim.tbl_isempty(toc_items) then
+    vim.notify('No ToC', vim.log.levels.INFO)
+    return
+  end
+
+  vim.fn.setloclist(0, {}, 'r', {
+    title = 'Markdown Table of Contents',
+    items = toc_items,
+  })
+
+  vim.cmd("lopen")
+end
+
 return M

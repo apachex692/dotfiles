@@ -22,11 +22,8 @@ vim.opt.signcolumn = 'yes'
 vim.opt.smartindent = true
 vim.opt.ignorecase = true
 
--- Text Formatting
-vim.opt.textwidth = 80
-
 -- Visual Guides
-vim.opt.colorcolumn = '88'
+vim.opt.colorcolumn = '90'
 
 -- Completion Behavior
 vim.opt.completeopt = { 'menu', 'menuone', 'noinsert', 'popup' }

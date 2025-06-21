@@ -2,7 +2,7 @@
 -- Created on: 29/03/2025
 --
 -- Commands Configuration: Common for All Languages
-local pyright_set_python_path = require('lsp.helpers').pyright_set_python_path
+local lsp_helpers = require('lsp.helpers')
 
 -- List LSP Capabilities
 -- A command that lists down the capabilities of LSP servers attached to
@@ -55,10 +55,22 @@ vim.api.nvim_create_user_command(
 vim.api.nvim_create_user_command(
   'PythonPyrightSetInterpreterPath',
   function(opts)
-    pyright_set_python_path(opts.args)
+    lsp_helpers.pyright_set_python_path(opts.args)
   end,
   {
     nargs = 1,
     desc = 'Interpreter Path'
+  }
+)
+
+-- Markdown: Show ToC
+vim.api.nvim_create_user_command(
+  'MarkdownShowToC',
+  function()
+    lsp_helpers.show_markdown_toc()
+  end,
+  {
+    nargs = 0,
+    desc = 'Show Table of Contents for Markdown'
   }
 )
