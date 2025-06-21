@@ -58,11 +58,11 @@ set smartindent
 set ignorecase
 
 syntax on
-colorscheme slate
+colorscheme shine
 filetype indent on
 highlight Comment cterm=italic
 
-set colorcolumn=80
+set colorcolumn=90
 highlight ColorColumn ctermbg=darkgrey guibg=lightgrey
 
 set shortmess+=I
