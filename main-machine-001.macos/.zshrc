@@ -40,7 +40,7 @@ zstyle ':completion:*' special-dirs true
 HISTSIZE=1000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
-setopt HIST_IGNORE_ALL_DUPS HIST_SAVE_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
 
 # Enable Command Auto-correction
 setopt correct
