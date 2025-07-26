@@ -14,12 +14,15 @@ PROMPT="%F{cyan}%n%f@%B%F{green}%m%f%b %F{yellow}%~%f
 ➡️  "
 RPROMPT="%F{white}[%?]%f %(?..%F{red}⚠%f) 🚁"
 
+fpath=($fpath $HOME/.local/share/zsh/completions/)
+
 export PATH="$PATH:$HOME/.local/bin:$HOME/Library/Python/3.9/bin:$HOME/.npm/global-packages/bin:$HOME/.go/bin/"
+export MANPATH="$MANPATH:$HOME/.local/share/man"
 export GOPATH="$HOME/.go/"
 
 # Enable Zsh Completion
-autoload -Uz compinit
-compinit -C # With Compiled Cache
+autoload -U compinit
+compinit -i # -i: Allow Loading Completions from User-defined Directories
 
 # Enable Menu Selection
 zstyle ':completion:*' menu select
@@ -37,10 +40,9 @@ zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*' special-dirs true
 
 # Load History and Improve Command Recall
+HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=10000
-HISTFILE=~/.zsh_history
-setopt HIST_SAVE_NO_DUPS
 
 # Enable Command Auto-correction
 setopt correct
