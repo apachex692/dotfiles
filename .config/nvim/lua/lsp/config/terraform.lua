@@ -6,8 +6,8 @@
 -- 1. https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/terraformls.lua
 vim.lsp.config['terraform-ls'] = {
   cmd = { 'terraform-ls', 'serve' },
-  filetypes = { 'hcl', 'terraform-vars' },
-  root_dir = { '.git' },
+  filetypes = { 'terraform', 'tf', 'hcl', 'terraform-vars' },
+  root_markers = { '.terraform', '.git' },
 }
 
 -- Enable

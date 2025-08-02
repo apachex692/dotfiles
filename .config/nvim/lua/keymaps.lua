@@ -2,7 +2,7 @@
 -- Created on: 29/03/2025
 --
 -- Keymaps Configuration
-helpers = require('helpers')
+local helpers = require('helpers')
 
 vim.g.mapleader = ' '
 

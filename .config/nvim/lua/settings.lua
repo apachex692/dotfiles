@@ -59,4 +59,4 @@ vim.env.FZF_DEFAULT_COMMAND = table.concat({
     '! -name "*.pyo"',
     '! -name "*.out"',
 }, ' ')
-vim.g.fzf_action = { enter = 'confirm e' }
+vim.g.fzf_action = { ['enter'] = 'edit' }
