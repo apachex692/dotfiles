@@ -51,6 +51,20 @@ vim.api.nvim_create_user_command(
 )
 
 -- Language Specific
+-- Python: Set Pyright Interpreter Path
+-- XXX: Invoke this command only after the LSP is active (attached to a buffer). It won't
+-- work if the LSP is only enabled.
+vim.api.nvim_create_user_command(
+  'PythonPyrightSetInterpreterPath',
+  function(opts)
+    lsp_helpers.python_set_pyright_interpreter_path(opts.args)
+  end,
+  {
+    nargs = 1,
+    desc = 'Interpreter Path'
+  }
+)
+
 -- Markdown: Show ToC
 vim.api.nvim_create_user_command(
   'MarkdownShowToC',
